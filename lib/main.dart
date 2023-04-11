@@ -125,6 +125,7 @@ class ItemCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
+              Image(image: image)
               TextButton(
                 child: const Text('BUY TICKETS'),
                 onPressed: () {
