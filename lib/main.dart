@@ -13,7 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DesQ',
       theme: ThemeData(
+       // useMaterial3: true,
         primaryColor: Colors.green,
+        secondaryHeaderColor: Colors.green,
+        primaryColorLight: Colors.green,
+
         fontFamily: 'Georgia',
         textTheme: const TextTheme(
           displayLarge: TextStyle(
@@ -26,7 +30,6 @@ class MyApp extends StatelessWidget {
           labelSmall: TextStyle(color: Colors.white),
           headlineSmall: TextStyle(color: Colors.white),
           headlineMedium: TextStyle(color: Colors.white),
-
         ),
         primarySwatch: Colors.green,
       ),
@@ -56,6 +59,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -72,29 +76,117 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+
+        leading: Icon(Icons.menu, size: 40),
+        actions: [
+          Icon(
+            Icons.account_circle_outlined,
+            size: 40,
+            shadows: [Shadow(color: Colors.black, blurRadius: 15.0)],
+          )
+        ],
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        //bottom: Text("ASD"),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ItemCard(itemName: "Testi 1", price: "300,00€"),
-            ItemCard(itemName: "Testi 2", price: "200,00€"),
-            ItemCard(itemName: "Testi 3", price: "300,00€"),
-            ItemCard(itemName: "Testi 4", price: "200,00€"),
-            ItemCard(itemName: "Testi 5", price: "300,00€"),
-            ItemCard(itemName: "Testi 6", price: "200,00€"),
-            ItemCard(itemName: "Testi 7", price: "300,00€"),
-            ItemCard(itemName: "Testi 8", price: "200,00€"),
-            ItemCard(itemName: "Testi 9", price: "300,00€"),
-            ItemCard(itemName: "Testi 10", price: "200,00€"),
-            ItemCard(itemName: "Testi 11", price: "300,00€"),
-            ItemCard(itemName: "Testi 12", price: "200,00€"),
-            ItemCard(itemName: "Testi 13", price: "300,00€"),
-            ItemCard(itemName: "Testi 14", price: "200,00€"),
-            ItemCard(itemName: "Testi 15", price: "100,00€")
+            ItemCard(
+                itemName: "Testi 1",
+                price: "300,00€",
+                image: 'graphics/photo1.jpg'),
+            ItemCard(
+                itemName: "Testi 2",
+                price: "200,00€",
+                image: 'graphics/photo2.jpg'),
+            ItemCard(
+                itemName: "Testi 3",
+                price: "300,00€",
+                image: 'graphics/photo3.jpg'),
+            ItemCard(
+                itemName: "Testi 4",
+                price: "200,00€",
+                image: 'graphics/photo4.jpg'),
+            ItemCard(
+                itemName: "Testi 5",
+                price: "300,00€",
+                image: 'graphics/photo5.jpg'),
+            ItemCard(
+                itemName: "Testi 6",
+                price: "200,00€",
+                image: 'graphics/photo1.jpg'),
+            ItemCard(
+                itemName: "Testi 7",
+                price: "300,00€",
+                image: 'graphics/photo2.jpg'),
+            ItemCard(
+                itemName: "Testi 8",
+                price: "200,00€",
+                image: 'graphics/photo3.jpg'),
+            ItemCard(
+                itemName: "Testi 9",
+                price: "300,00€",
+                image: 'graphics/photo4.jpg'),
+            ItemCard(
+                itemName: "Testi 10",
+                price: "200,00€",
+                image: 'graphics/photo5.jpg'),
+            ItemCard(
+                itemName: "Testi 11",
+                price: "300,00€",
+                image: 'graphics/photo1.jpg'),
+            ItemCard(
+                itemName: "Testi 12",
+                price: "200,00€",
+                image: 'graphics/photo2.jpg'),
+            ItemCard(
+                itemName: "Testi 13",
+                price: "300,00€",
+                image: 'graphics/photo3.jpg'),
+            ItemCard(
+                itemName: "Testi 14",
+                price: "200,00€",
+                image: 'graphics/photo4.jpg'),
+            ItemCard(
+                itemName: "Testi 15",
+                price: "100,00€",
+                image: 'graphics/photo5.jpg')
           ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.lightGreenAccent,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: OverflowBar(
+            overflowAlignment: OverflowBarAlignment.center,
+            alignment: MainAxisAlignment.spaceAround,
+            overflowSpacing: 5.0,
+            children: <Widget>[
+              ElevatedButton.icon(
+                onPressed: () {
+                  setState(() {
+
+                  });
+                },
+                icon: Icon(Icons.favorite_border,
+                ),
+                label: const Text('Omat suosikit'),
+              ),
+              const SizedBox(width: 5),
+        CircleAvatar(
+          radius: 25,
+          backgroundColor: Colors.grey,
+          child: IconButton(
+                onPressed: () {
+                },
+                icon: const Icon(Icons.add),
+          )
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -104,44 +196,62 @@ class _MyHomePageState extends State<MyHomePage> {
 class ItemCard extends StatelessWidget {
   final String itemName;
   final String price;
+  final String image;
 
-  const ItemCard({Key? key, required this.itemName, required this.price})
+  const ItemCard(
+      {Key? key,
+      required this.itemName,
+      required this.price,
+      required this.image})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
       color: Colors.black,
-      child: Column(
+      elevation: 5,
+      shadowColor: Colors.black,
+      child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          ListTile(
-            textColor: Colors.white,
-            iconColor: Colors.lightGreen,
-            leading: Icon(Icons.heart_broken),
-            title: Text(itemName),
-            subtitle: Text(price),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Image(image: image)
-              TextButton(
-                child: const Text('BUY TICKETS'),
-                onPressed: () {
-                  /* ... */
-                },
+        children: [
+          Expanded(
+            flex: 3,
+            child: Container(
+              alignment: Alignment.topLeft,
+              child: ListTile(
+                textColor: Colors.white,
+                iconColor: Colors.black,
+                leading: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Color(0xff94d500),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.favorite_border,
+                      color: Colors.black,
+                    ),
+                      onPressed: () {
+
+                }
+                  ),
+                ),
+                title: Text(itemName),
+                subtitle: Text(price),
               ),
-              const SizedBox(width: 8),
-              TextButton(
-                child: const Text('LISTEN'),
-                onPressed: () {
-                  /* ... */
-                },
-              ),
-              const SizedBox(width: 8),
-            ],
+            ),
           ),
+          Expanded(
+            flex: 1,
+            child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                ),
+                child: Image.asset(image,
+                    width: 100, height: 100, fit: BoxFit.cover)),
+          )
         ],
       ),
     );
