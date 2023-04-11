@@ -11,9 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'DesQ',
       theme: ThemeData(
        // useMaterial3: true,
+
         primaryColor: Colors.green,
         secondaryHeaderColor: Colors.green,
         primaryColorLight: Colors.green,
@@ -76,14 +78,16 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
 
         leading: Icon(Icons.menu, size: 40),
-        actions: [
-          Icon(
-            Icons.account_circle_outlined,
+        actions: [Container( padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+          child:Icon(
+            Icons.search,
             size: 40,
             shadows: [Shadow(color: Colors.black, blurRadius: 15.0)],
-          )
+
+          ),)
         ],
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
@@ -157,15 +161,18 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.lightGreenAccent,
+        color: Colors.black87,
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: OverflowBar(
             overflowAlignment: OverflowBarAlignment.center,
-            alignment: MainAxisAlignment.spaceAround,
+            alignment: MainAxisAlignment.spaceBetween,
             overflowSpacing: 5.0,
             children: <Widget>[
               ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green,
+          ),
                 onPressed: () {
                   setState(() {
 
@@ -175,16 +182,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 label: const Text('Omat suosikit'),
               ),
-              const SizedBox(width: 5),
-        CircleAvatar(
+
+        Container(
+          //alignment: AlignmentDirectional.bottomEnd,
+          child:
+              CircleAvatar(
           radius: 25,
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.white70,
           child: IconButton(
                 onPressed: () {
                 },
                 icon: const Icon(Icons.add),
           )
-              ),
+              ),)
             ],
           ),
         ),
@@ -226,7 +236,7 @@ class ItemCard extends StatelessWidget {
                 iconColor: Colors.black,
                 leading: CircleAvatar(
                   radius: 30,
-                  backgroundColor: Color(0xff94d500),
+                  backgroundColor: Colors.green,
                   child: IconButton(
                     icon: Icon(
                       Icons.favorite_border,
