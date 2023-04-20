@@ -22,16 +22,9 @@ class MyApp extends StatelessWidget {
 
         fontFamily: 'Georgia',
         textTheme: const TextTheme(
-          displayLarge: TextStyle(
-              fontSize: 72.0, fontWeight: FontWeight.bold, color: Colors.green),
           titleLarge: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
           bodyMedium: TextStyle(
               fontSize: 14.0, fontFamily: 'Hind', color: Colors.white),
-          displaySmall: TextStyle(color: Colors.white),
-          bodySmall: TextStyle(color: Colors.white),
-          labelSmall: TextStyle(color: Colors.white),
-          headlineSmall: TextStyle(color: Colors.white),
-          headlineMedium: TextStyle(color: Colors.white),
         ),
         primarySwatch: Colors.green,
       ),
@@ -50,13 +43,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         centerTitle: true,
 
-        leading: Icon(Icons.menu, size: 40),
+        leading: Icon(Icons.menu, size: 40, color: Colors.black,),
         actions: [
           Container(
             padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
@@ -78,12 +65,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Icons.search,
               size: 40,
               shadows: [Shadow(color: Colors.black, blurRadius: 15.0)],
-            ),
+            color: Colors.black,),
           )
         ],
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(widget.title, style: TextStyle(color: Colors.black)),
       ),
       body: Column(
         children: [
@@ -224,7 +211,9 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.symmetric(vertical: 2.0, horizontal: 2.0),
+
         child: Card(
+
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
