@@ -43,15 +43,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -95,79 +86,81 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Column(
-        children: [Container(
-          color: Color.alphaBlend(Colors.black87, Colors.green),
-          height: 60,
-
-          child:
-          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-            TextButton(onPressed: () {}, child: const Text("Kategoria")),
-            TextButton(onPressed: () {}, child: const Text("Suodata")),
-            TextButton(onPressed: () {}, child: const Text("Näytä kartalla"))
-          ]),),
+        children: [
+          Container(
+            color: Color.alphaBlend(Colors.black87, Colors.green),
+            height: 60,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton(onPressed: () {}, child: const Text("Kategoria")),
+                  TextButton(onPressed: () {}, child: const Text("Suodata")),
+                  TextButton(
+                      onPressed: () {}, child: const Text("Näytä kartalla"))
+                ]),
+          ),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   ItemCard(
-                      itemName: "Testi 1",
+                      itemName: "Tuote 1",
                       price: "300,00€",
                       image: 'graphics/photo1.jpg'),
                   ItemCard(
-                      itemName: "Testi 2",
+                      itemName: "Tuote 2",
                       price: "200,00€",
                       image: 'graphics/photo2.jpg'),
                   ItemCard(
-                      itemName: "Testi 3",
+                      itemName: "Tuote 3",
                       price: "300,00€",
                       image: 'graphics/photo3.jpg'),
                   ItemCard(
-                      itemName: "Testi 4",
+                      itemName: "Tuote 4",
                       price: "200,00€",
                       image: 'graphics/photo4.jpg'),
                   ItemCard(
-                      itemName: "Testi 5",
+                      itemName: "Tuote 5",
                       price: "300,00€",
                       image: 'graphics/photo5.jpg'),
                   ItemCard(
-                      itemName: "Testi 6",
+                      itemName: "Tuote 6",
                       price: "200,00€",
                       image: 'graphics/photo1.jpg'),
                   ItemCard(
-                      itemName: "Testi 7",
+                      itemName: "Tuote 7",
                       price: "300,00€",
                       image: 'graphics/photo2.jpg'),
                   ItemCard(
-                      itemName: "Testi 8",
+                      itemName: "Tuote 8",
                       price: "200,00€",
                       image: 'graphics/photo3.jpg'),
                   ItemCard(
-                      itemName: "Testi 9",
+                      itemName: "Tuote 9",
                       price: "300,00€",
                       image: 'graphics/photo4.jpg'),
                   ItemCard(
-                      itemName: "Testi 10",
+                      itemName: "Tuote 10",
                       price: "200,00€",
                       image: 'graphics/photo5.jpg'),
                   ItemCard(
-                      itemName: "Testi 11",
+                      itemName: "Tuote 11",
                       price: "300,00€",
                       image: 'graphics/photo1.jpg'),
                   ItemCard(
-                      itemName: "Testi 12",
+                      itemName: "Tuote 12",
                       price: "200,00€",
                       image: 'graphics/photo2.jpg'),
                   ItemCard(
-                      itemName: "Testi 13",
+                      itemName: "Tuote 13",
                       price: "300,00€",
                       image: 'graphics/photo3.jpg'),
                   ItemCard(
-                      itemName: "Testi 14",
+                      itemName: "Tuote 14",
                       price: "200,00€",
                       image: 'graphics/photo4.jpg'),
                   ItemCard(
-                      itemName: "Testi 15",
+                      itemName: "Tuote 15",
                       price: "100,00€",
                       image: 'graphics/photo5.jpg')
                 ],
@@ -229,50 +222,52 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      color: Colors.black,
-      elevation: 5,
-      shadowColor: Colors.black,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Expanded(
-            flex: 3,
-            child: Container(
-              alignment: Alignment.topLeft,
-              child: ListTile(
-                textColor: Colors.white,
-                iconColor: Colors.black,
-                leading: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.green,
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.favorite_border,
-                        color: Colors.black,
-                      ),
-                      onPressed: () {}),
-                ),
-                title: Text(itemName),
-                subtitle: Text(price),
-              ),
-            ),
+    return Container(
+        margin: EdgeInsets.symmetric(vertical: 2.0, horizontal: 2.0),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
           ),
-          Expanded(
-            flex: 1,
-            child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
+          color: Colors.black,
+          elevation: 5,
+          shadowColor: Colors.black,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Expanded(
+                flex: 3,
+                child: Container(
+                  alignment: Alignment.topLeft,
+                  child: ListTile(
+                    textColor: Colors.white,
+                    iconColor: Colors.black,
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.green,
+                      child: IconButton(
+                          icon: Icon(
+                            Icons.favorite_border,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {}),
+                    ),
+                    title: Text(itemName),
+                    subtitle: Text(price),
+                  ),
                 ),
-                child: Image.asset(image,
-                    width: 100, height: 100, fit: BoxFit.cover)),
-          )
-        ],
-      ),
-    );
+              ),
+              Expanded(
+                flex: 1,
+                child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    ),
+                    child: Image.asset(image,
+                        width: 100, height: 100, fit: BoxFit.cover)),
+              )
+            ],
+          ),
+        ));
   }
 }
